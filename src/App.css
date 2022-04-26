@@ -1,0 +1,21 @@
+.column {
+    float: left;
+    width: 25%;
+    padding: 50px;
+    height: 300px;
+    font-size: 16px;
+    display: table-cell;
+    padding: 10px;
+    width: 33.33333%;
+    text-align: center;
+    vertical-align: middle;
+    border-left: 10px solid #eee;
+    border-right: 10px solid #eee;
+    width: 50px;
+    height: 50px;
+}
+
+.row {
+    margin: 20px 0px;
+    border-left: 10px solid #eee;
+}

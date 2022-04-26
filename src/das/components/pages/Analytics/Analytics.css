@@ -1,0 +1,33 @@
+.firstlinet
+{
+    display: flex;
+    justify-content: flex-start;
+    
+}
+.bothhaftt
+{
+    
+  
+   
+}
+.secondhaftt
+{
+    margin: 0;
+    padding: 0;
+
+}
+.secondlinet
+{
+    width: 80%;
+}
+@media screen and (max-width: 1457px) {
+
+    .bothhaft
+    {
+        display:table-row;
+       
+    }
+    
+
+
+}

@@ -1,0 +1,43 @@
+.text-center{
+    text-align: center; 
+    font-size: 25px;
+
+}
+
+.text-heading{
+    font-size: 30px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.terms
+{
+    padding-left: 50px;
+    font-size: 30px;
+    
+    height: 100%;
+    width: 100%;
+
+}
+.bad
+{
+    background: rgb(32,32,38);
+    background: radial-gradient(circle, rgba(32,32,38,1) 0%, rgba(196,196,214,1) 50%, rgba(227,235,237,1) 100%);
+    color: black;
+    background-repeat: no-repeat;
+
+}
+.bl
+{
+    color: black;
+}
+.text-headingg
+{
+    font-size: 50px;  
+}
+.ml
+{
+    height: 30%;
+   display: flex;
+   justify-content: center;
+}

@@ -1,0 +1,11 @@
+.something
+{
+    background-color: #f8fdff;
+    margin-top: 50px;
+    margin-left: 3%;
+    width: 300px;
+    height: 400px;
+    -webkit-box-shadow: 12px 8px 38px 1px #000000; 
+    box-shadow: 12px 8px 38px 1px #000000;
+    border-radius:40px ;
+}

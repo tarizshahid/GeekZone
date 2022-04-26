@@ -1,0 +1,68 @@
+.outter
+{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    -webkit-box-shadow: 9px 8px 15px -8px #000000; 
+    box-shadow: 9px 8px 15px -8px #000000;
+    padding:20px;
+}
+.inner
+{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 9px 8px 15px -8px #000000; 
+box-shadow: inset 9px 8px 15px -8px #000000;;
+}
+.number
+{
+font-size: 25px;
+color: #555;
+}
+.circle
+{
+  fill: none;
+  stroke: url(#GradientColor);
+  
+  stroke-width: 20px;
+  stroke-dasharray: 310;
+  
+  stroke-dashoffset: 109;
+}
+.svg{
+    position: relative;
+    top:-140px;
+    left:-15px
+}
+.skill
+{
+   
+    background-color: #f8fdff;
+    margin-top: 50px;
+    margin-left: 3%;
+    width: 300px;
+    height: 400px;
+    -webkit-box-shadow: 12px 8px 38px 1px #000000; 
+box-shadow: 12px 8px 38px 1px #000000;
+border-radius:40px ;
+}
+.firstper
+{
+   margin-top:7px;
+   margin-left: 85px;
+   height: 41%;
+}
+.secondper
+{
+    margin-left: 85px;
+}
+.nas
+{
+   position: relative;
+    top:-15px;
+    left:40px;
+}

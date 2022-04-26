@@ -1,0 +1,30 @@
+.firstline
+{
+    display: flex;
+    justify-content: flex-start;
+    
+}
+.bothhaft
+{
+    display: flex;
+    justify-content: space-evenly;
+  
+   
+}
+.secondhaft
+{
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 1457px) {
+
+    .bothhaft
+    {
+        display:table-row;
+       
+    }
+    
+
+
+}
