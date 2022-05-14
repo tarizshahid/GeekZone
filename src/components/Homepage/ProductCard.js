@@ -3,21 +3,12 @@ import { Card } from 'react-bootstrap'
 import {Row,Col} from 'react-bootstrap'
 import { CardBody, CardTitle, CardSubtitle, CardText, Button, CardImg } from 'reactstrap'
 import './ProductCard.css'
+import {Link as RouterLink} from 'react-router-dom'
+import Link from '@mui/material/Link';
 
 export default function ProductCard({product}) {
   
-  
-  
-  
-  
-  
-  
-  
   return (
-
-
-
-
 
 
       <Row xs={1} md={4}  className="g-4" style={{width:'1800px',paddingLeft:"100px",marginBottom:'50px',marginTop:'50px'}}>
@@ -34,7 +25,11 @@ export default function ProductCard({product}) {
            </p>
               </Card.Text>
             </Card.Body>
-            <Button   className='button'>BUY</Button>
+            <Link to="/SingleProductView" component={RouterLink} variant="body2">
+                    <Button className='button'>BUY</Button>
+                  </Link>
+            
+
           </Card>
           
         </Col>

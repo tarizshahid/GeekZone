@@ -3,6 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Navbar  from './Homepage/Navbar'
 import { css } from 'styled-components'
+import {Link as RouterLink} from 'react-router-dom'
+import Link from '@mui/material/Link';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -165,7 +167,12 @@ const Cart = () => {
              <Wrapper>
                <Title>YOUR  BAG</Title>
                <Top>
-                   <TopButton type='filled'>CONTINUE SHOPPING</TopButton>
+               <Link to="/" component={RouterLink} variant="body2">
+                 <TopButton type='filled'>CONTINUE SHOPPING</TopButton>
+                   
+                  </Link>
+               
+                   
                    <TopTexts>
                        <TopText>Shopping Bag(2)</TopText>
                        <TopText>Your Wishlist(0)</TopText>

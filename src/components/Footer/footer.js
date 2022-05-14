@@ -1,5 +1,8 @@
-import React from 'react';
- import './Footer.css'
+import React from 'react'
+import FAQs from '../FAQs/FAQs'
+import './Footer.css'
+import {Link as RouterLink} from 'react-router-dom'
+import Link from '@mui/material/Link';
 import { faFacebook, faTwitter, faLinkedinIn, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 const Footer = () => {
@@ -11,7 +14,11 @@ const Footer = () => {
   	 			<h4>GeekZone</h4>
   	 			<ul>
   	 				<li><a href="#">About us</a></li>
-  	 				<li><a href="#">FAQs</a></li>
+  	 				<Link to="/FAQs" component={RouterLink} variant="">
+					   <li><a href="#">FAQs</a></li>
+                  </Link>
+					   
+
   	 				<li><a href="#">Contact us</a></li>
   	 				<li><a href="#">affiliate program</a></li>
   	 			</ul>
@@ -29,11 +36,11 @@ const Footer = () => {
   	 		<div className="footer-col">
   	 			<h4>follow us</h4>
   	 			<div className="social-links">
-  	 				<a href="https://www.facebook.com/geekzone/"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="https://www.facebook.com/geekzone/"><i className="fab fa-facebook-f"></i></a>
   	 				<a href="https://www.twitter.com/geekzone/"><i className="fab fa-twitter"></i></a>
 					<br/>
-  	 				<a href="https://www.instagram.com/geekzone/"><i class="fab fa-instagram"></i></a>
-  	 				<a href="https://www.linkedin.com/geekzone/"><i class="fab fa-linkedin-in"></i></a>
+  	 				<a href="https://www.instagram.com/geekzone/"><i className="fab fa-instagram"></i></a>
+  	 				<a href="https://www.linkedin.com/geekzone/"><i className="fab fa-linkedin-in"></i></a>
   	 			</div>
   	 		</div>
 			   <div className="footer-col">

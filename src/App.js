@@ -18,7 +18,7 @@ import Signin from "./components/Signin"
 import SignUp from './components/Signup'
 import FAQs from "./components/FAQs/FAQs"
 import Homepage from './components/Homepage/Homepage';
-import Das from './das/Dashboard';
+import SingleProductView from './components/SingleProductView'
 
 
 export default function App() {
@@ -32,7 +32,8 @@ export default function App() {
           <Route  path='/signin' element={<Signin/>} />
           <Route  path='/signup' element={<SignUp />} />
           <Route  path='/dashboard/*' element={<Dashboard />} />
-
+          <Route  path='/FAQs' element={<FAQs />} />
+          <Route  path='/SingleProductView' element={<SingleProductView/>} /> 
       </Routes>
 
    </>

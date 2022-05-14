@@ -15,6 +15,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import axios from 'axios';
+import Footer from './Footer/footer'
+import Navbar from './Homepage/Navbar';
 
 
 function Copyright(props) {
@@ -32,10 +34,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-function handleSignUp() {
-  console.log("gonna call it");
-   
-};
+
 
 
 
@@ -59,6 +58,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Navbar/>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -145,6 +145,7 @@ export default function SignUp() {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
+      <Footer/>
     </ThemeProvider>
   );
 }
