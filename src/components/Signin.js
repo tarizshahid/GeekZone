@@ -14,8 +14,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import Footer from './Footer/footer'
-import Navbar from './Homepage/Navbar';
 
 function Copyright(props) {
   return (
@@ -36,7 +34,6 @@ export default function SignInSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     
     const signindata = {
       email: data.get('email'),
@@ -56,7 +53,7 @@ export default function SignInSide() {
   
   return (
     <ThemeProvider theme={theme}>
-      <Navbar/>
+    
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -139,7 +136,7 @@ export default function SignInSide() {
           </Box>
         </Grid>
       </Grid>
-    <Footer/>
+
     </ThemeProvider>
   );
 }

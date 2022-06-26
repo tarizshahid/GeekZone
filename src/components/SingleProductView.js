@@ -2,6 +2,7 @@ import React from 'react'
 import '../App.css'
 import Navbar from './Homepage/Navbar'
 import Footer from './Footer/footer'
+// import './SingleProductView.css'
 
 const SingleProductView = () => {
   return (

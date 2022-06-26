@@ -53,19 +53,19 @@ li {
 
 .search-cart {
   grid-column: 4/5;
-  margin-left:20% ;
+  margin-left:5% ;
 }
 
 .search-cart ul {
   height: 10.5rem;
   display: grid;
-  grid-template-columns: 20% 20% 60%;
+  grid-template-columns: 40% 10% 40%;
   align-items: center;
   justify-content: flex-end;
 }
 
 .search-cart p {
-font-size: 18px;
+font-size: 44px;
 margin-left: 100px;
 margin-top: 8px;
 text-decoration: none;
@@ -270,3 +270,77 @@ padding-left: 10rem;
     font-size: 2.5rem;
   }
 }
+
+
+form{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: all 1s;
+  width: 50px;
+  height: 50px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid white;
+  padding: 5px;
+}
+
+/* input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;;
+  height: 42.5px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  background-color: black;
+  font-size: 0.8em;
+  color: white;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+.polj
+{
+  width: 100px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+.bnm
+{
+  padding-bottom: 20px;
+}
+.fa{
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: #07051a;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
+
+form:hover,
+form:valid{
+  width: 200px;
+  cursor: pointer;
+}
+
+form:hover input,
+form:valid input{
+  display: block;
+}
+
+form:hover .fa,
+form:valid .fa{
+  background: #07051a;
+  color: white;
+} */

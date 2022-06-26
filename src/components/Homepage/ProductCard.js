@@ -27,6 +27,10 @@ export default function ProductCard({product}) {
             </Card.Body>
             <Link to="/SingleProductView" component={RouterLink} variant="body2">
                     <Button className='button'>BUY</Button>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <Button className='button'>Add To Cart</Button>
                   </Link>
             
 

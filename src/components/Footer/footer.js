@@ -14,13 +14,12 @@ const Footer = () => {
   	 			<h4>GeekZone</h4>
   	 			<ul>
   	 				<li><a href="#">About us</a></li>
-  	 				<Link to="/FAQs" component={RouterLink} variant="">
-					   <li><a href="#">FAQs</a></li>
-                  </Link>
-					   
+  	 				<Link to="/FAQs" component={RouterLink} >
+					   <li>FAQs</li>
+                    </Link>
 
-  	 				<li><a href="#">Contact us</a></li>
-  	 				<li><a href="#">affiliate program</a></li>
+  	 				<li>    <a href="https://wa.me/923002209985" target="_blank" rel="noopener noreferrer">Contact Us </a></li>
+  	 				<li><a href="#">Go to Top</a></li>
   	 			</ul>
   	 		</div>
   	 	

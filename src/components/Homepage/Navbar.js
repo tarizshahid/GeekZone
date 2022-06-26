@@ -19,23 +19,40 @@ const Navbar = () => {
 
                 <div className={showMediaIcons ? "menu-link mobile-menu-link" : 'menu-link'}>
                     <ul>
-                        <li><a href="#"> Home   </a></li>
-                        <li><a href="#"> Gaming </a></li>
-                        <li><a href="#"> Mobile </a></li>
-                        <li><a href="#"> Health </a></li>
-                        <li><a href="#"> Drones </a></li>
-                        <li><a href="#"> Office </a></li>
+                    <Link to="/Drones" component={RouterLink} >
+					   <li>Drones</li>
+                  </Link>
+                    <Link to="/Gaming" component={RouterLink} >
+					   <li>Gaming</li>
+                    </Link>
+                    <Link to="/Office" component={RouterLink} >
+					   <li>Office</li>
+                  </Link>
+                  <Link to="/Mobile-gadgets" component={RouterLink} >
+					   <li>Mobile</li>
+                  </Link>
+                  <Link to="/Health" component={RouterLink} >
+					   <li>Health</li>
+                  </Link>
+                    
+                    
                     </ul>
                 </div>
 
                 <div className='search-cart'>
                     <ul>
-                        <li><AiOutlineSearch /></li>
+                        <li className='polj'>
+                        <form action="">
+                        <input type="search" required/>
+                        <i class="fa fa-search"></i>
+                        </form>
+                        </li>
                         <li>
-                            <Link sx={{fontSize: '18px'}} to="/cart" component={RouterLink} variant="body2">
+                            <Link sx={{fontSize: '25px'}} to="/cart" component={RouterLink} variant="body2">
                                 <AiOutlineShoppingCart />
                             </Link>
                         </li>
+                        <li className='bnm'>
                         <a> 
                             <p>  
                                 <Link sx={{fontSize: '18px'}} to="/signin" component={RouterLink} variant="body2">
@@ -43,6 +60,7 @@ const Navbar = () => {
                                 </Link>
                             </p>
                         </a>
+                        </li>
                     </ul>
 
                     <div className="hamburger-menu">    {/* hamburger menu */}

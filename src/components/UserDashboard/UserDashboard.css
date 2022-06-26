@@ -1,0 +1,35 @@
+.udh1{
+    margin-top: 0%;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    float: inherit;
+}
+
+h2{
+    margin-top: 10px;
+    margin-left: 85px;
+}
+
+.vl {
+    border-left: 2px solid black;
+    height: 500px;
+    margin-left: 20%;
+    margin-top: 20px;
+}
+
+.part1{
+    float: right;
+}
+
+.udh2{
+    margin-top: 0%;
+    text-decoration: underline;
+    padding-left: 350px;
+    
+}
+
+.tabdiv{
+    
+    padding-left: 300px;
+    padding-top: 25px;
+}
