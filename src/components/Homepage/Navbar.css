@@ -272,7 +272,7 @@ padding-left: 10rem;
 }
 
 
-form{
+/* form{
   position: relative;
   top: 50%;
   left: 50%;
@@ -287,7 +287,7 @@ form{
   padding: 5px;
 }
 
-/* input{
+input{
   position: absolute;
   top: 0;
   left: 0;
