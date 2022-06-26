@@ -26,14 +26,14 @@ import Health from './components/Health/Health'
 import Office from './components/Office/Office'
 import { NotFound } from './components/NotFound'
 import UserDashboard from './components/UserDashboard/UserDashboard'
-
+import AddProducts from './components/Homepage/AddProducts'
+import AddProd from './components/AddProduct/addProduct'
 
 export default function App() {
 
   return (
    <>
       <Routes>
-          <Route  path='/' element={<Homepage/>} />
           <Route  path='/home' element={<Homepage/>} />
           <Route  path='/Gaming' element={<Gaming/>} />
           <Route  path='/Drones' element={<Drone/>} />
@@ -47,9 +47,10 @@ export default function App() {
           <Route  path='/dashboard/*' element={<Dashboard/>} />
           <Route  path='/FAQs' element={<FAQs />} />
           <Route  path='/SingleProductView' element={<SingleProductView/>} /> 
-          <Route exact path='*' element={<NotFound/>} /> 
-
-          
+          <Route  path='/dashboard/products/AddProduct' element={<AddProd/>}/>
+          <Route  path='/UserDashboard' element={<UserDashboard/>}/>
+          <Route exact path='/' element={<Homepage/>} /> 
+          <Route exact path='*' element={<NotFound/>} />  
       </Routes>
 
    </>

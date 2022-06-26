@@ -100,8 +100,9 @@ const Navbar = () => {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
           </Typography>
-          <Search>
-            <SearchIconWrapper>
+       
+          <Search className='navbarsearch'>
+            <SearchIconWrapper >
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
@@ -109,9 +110,9 @@ const Navbar = () => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-                        </li>
-                        <li>
-                            <Link sx={{fontSize: '25px'}} to="/cart" component={RouterLink} variant="body2">
+            </li>
+                        <li className='navbarsearch'>
+                            <Link sx={{fontSize: '25px'}} to="/cart" component={RouterLink} variant="body2" className='navbarsearch'>
                                 <AiOutlineShoppingCart />
                             </Link>
                         </li>

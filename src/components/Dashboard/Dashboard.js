@@ -241,7 +241,7 @@ function DashboardContent() {
                 />
               <Route  path='Users'  element={<UsersTable />} />
               <Route  path='products' element={<ProductsTable />} />
-           </Routes>
+           </Routes>  
              
 
             </Grid>

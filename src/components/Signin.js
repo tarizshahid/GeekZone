@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -6,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import {Link as RouterLink} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -16,6 +18,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 
 function Copyright(props) {
+  
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
@@ -31,19 +34,35 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+  console.log("haan");
+  const navigate=useNavigate();
   const handleSubmit = (event) => {
+    console.log("sdfdf");
+     
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    console.log("qwqwe");
     
     const signindata = {
       email: data.get('email'),
       password: data.get('password')
     };
+    console.log("xzxc");
+
     axios.post(`http://localhost:4000/api/person/getData`,signindata).then(res => {
       if(res.data.data){
         console.log("email found" , res.data.data);
-        window.alert("User Credentials Match");
+        //window.alert("User Credentials Match");
         //yahan route login k baad admin etc
+        if(res.data.data.user_type=='admin'){
+          navigate("../dashboard")
+
+        }else{
+
+          navigate("../UserDashboard")
+        }
+        //window.location.href="http://localhost:3000/UserDashboard"
+
       }else{
         window.alert("User Credentials donot Match");
       }

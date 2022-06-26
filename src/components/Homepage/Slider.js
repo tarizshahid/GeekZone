@@ -14,7 +14,7 @@ export default function Slider() {
         else if (slideIndex === dataSlider.length){
             setSlideIndex(1)
         }
-    }
+    } 
 
     const prevSlide = () => {
         if(slideIndex !== 1){
@@ -32,7 +32,7 @@ export default function Slider() {
     return (
         <>
         <section className='hero-section'>
-                <p>Welcome to</p><h1>GeekZone</h1>
+                <p className='welcome'>Welcome to</p><h1 className='welcome'>GeekZone</h1>
             </section>
 
         <div className="container-slider">

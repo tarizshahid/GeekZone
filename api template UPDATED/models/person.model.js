@@ -7,7 +7,11 @@ const person = new Schema(
     Lname: String,
     email : String,
     pass:String,
-    id: Number
+    id: Number,
+    user_type:{
+      type:String,
+      default:'client'
+    }
   }
 );
 

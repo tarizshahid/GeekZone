@@ -13,6 +13,10 @@
     }
   }
 
+  .welcome{
+    color: black;
+  }
+
   .hero-section {
     height: 16vh;
     display: flex;
