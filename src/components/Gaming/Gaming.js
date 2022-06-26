@@ -13,7 +13,7 @@ export default function Gaming() {
       try {
   
           console.log("iddd");
-          axios.post(`http://localhost:4000/api/person/getData`,{_id:'id'}).then(res => {
+          axios.post(`http://localhost:4000/api/items/getData`,{data:{category:'Gaming'}}).then(res => {
               const allProducts=res.data.data
               console.log("allProducts", allProducts);
               setProducts(allProducts);

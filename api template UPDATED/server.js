@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 
 app.use("/api/analysis", require("./apis/analysis.router"));
+app.use("/api/items", require("./apis/items.router"));
 app.use("/api/person", require("./apis/person.router"));
 app.use("/api/cart", require("./apis/cart.router"));
 app.use("/api/payment", require("./apis/payment.router"));

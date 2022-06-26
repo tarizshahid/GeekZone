@@ -8,7 +8,14 @@ import {Link as RouterLink} from 'react-router-dom'
 import Link from '@mui/material/Link';
 
 export default function ProductCard({product}) {
-  
+
+  const addtocartandbuy = (event) => {
+         
+    console.log("ccc");
+
+
+};
+
   return (
 
 
@@ -16,7 +23,7 @@ export default function ProductCard({product}) {
         {product.map((p, i) => (
         <Col key={i}>
           <Card >
-            <Card.Img variant="top" src={p.image} />
+            <Card.Img variant="top" src={p.image||''} />
             <Card.Body>
               <Card.Title>{p.name}</Card.Title>
               <Card.Text>
@@ -26,13 +33,17 @@ export default function ProductCard({product}) {
            </p>
               </Card.Text>
             </Card.Body>
-            <Link to={`/SingleProductView/${p._id}`} component={RouterLink} variant="body2">
-                    <Button className='button'>BUY</Button>
+            
+                    <Button onClick={addtocartandbuy} className='button'>BUY</Button>
                     &nbsp;
                     &nbsp;
                     &nbsp;
-                    <Button className='button'>Add To Cart</Button>
+                <Link to={`/SingleProductView/${p._id}`} component={RouterLink} variant="body2">
+                    <Button className='button'>
+                      VIEW
+                      </Button>
                   </Link>
+
             
 
           </Card>
