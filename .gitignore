@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 /api_template_UPDATED\node_modules
+api_template_UPDATED\node_modules
+
 # testing
 /coverage
 
