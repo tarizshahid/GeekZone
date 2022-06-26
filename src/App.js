@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import './App.css'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Dashboard from './components/Dashboard/Dashboard'
 import { createTheme, ThemeProvider } from '@material-ui/core'
 import Catalog from './index'
@@ -34,7 +34,7 @@ export default function App() {
 
   return (
    <>
-      {/* <Routes>
+      <Routes>
           <Route  path='/' element={<Homepage/>} />
           <Route  path='/home' element={<Homepage/>} />
           <Route  path='/Gaming' element={<Gaming/>} />
@@ -51,8 +51,8 @@ export default function App() {
           <Route  path='/SingleProductView' element={<SingleProductView/>} /> 
           <Route exact path='*' element={<NotFound/>} /> 
           
-      </Routes> */}
-      <Dashboard/>
+      </Routes>
+
    </>
   )
 
