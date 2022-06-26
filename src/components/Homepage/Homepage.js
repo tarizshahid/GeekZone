@@ -5,6 +5,7 @@ import Slider from './Slider'
 import ProductCard from './ProductCard'
 import Footer from "../Footer/footer"
 import * as Realm from "realm-web"
+import axios from 'axios';
 
 // import Cart from './components/Cart'
 // import ProductCard from './components/Homepage/icons/ProductCard'
@@ -18,7 +19,7 @@ import * as Realm from "realm-web"
 
 export default function Homepapge() {
    const [products, setProducts] = useState([])
-
+  
   useEffect(async ()=> {
     const REALM_APP_ID = "products-kzbxu";
     const app = new Realm.App({id: REALM_APP_ID})

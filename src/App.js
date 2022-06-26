@@ -46,7 +46,7 @@ export default function App() {
           <Route  path='/signup' element={<SignUp />} />
           <Route  path='/dashboard/*' element={<Dashboard/>} />
           <Route  path='/FAQs' element={<FAQs />} />
-          <Route  path='/SingleProductView' element={<SingleProductView/>} /> 
+          <Route  path='/SingleProductView/:id' element={<SingleProductView/>} /> 
           <Route  path='/dashboard/products/AddProduct' element={<AddProd/>}/>
           <Route  path='/UserDashboard' element={<UserDashboard/>}/>
           <Route exact path='/' element={<Homepage/>} /> 

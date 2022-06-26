@@ -4,23 +4,26 @@ import Navbar from '../Homepage/Navbar'
 import {h1} from '../Gaming/Gaming.css'
 import ProductCard from '../Homepage/ProductCard'
 import * as Realm from "realm-web"
+import axios from 'axios';
 
 export default function Gaming() {
     const [products, setProducts] = useState([])
- 
-   useEffect(async ()=> {
-     const REALM_APP_ID = "products-kzbxu";
-     const app = new Realm.App({id: REALM_APP_ID})
-     const credentials = Realm.Credentials.anonymous();
-     try {
-         const user = await app.logIn(credentials);
-         const allProducts = await user.functions.getAllProducts();
-         setProducts(allProducts);
-         console.log(allProducts)
-     } catch (error) {
-         console.error(error);
-     }
-   },[])
+  
+    useEffect(async ()=> {
+      try {
+  
+          console.log("iddd");
+          axios.post(`http://localhost:4000/api/person/getData`,{_id:'id'}).then(res => {
+              const allProducts=res.data.data
+              console.log("allProducts", allProducts);
+              setProducts(allProducts);
+              console.log(allProducts)
+           } );
+  
+      } catch (error) {
+          console.error(error);
+      }
+    },[])
 
   return (
     <>

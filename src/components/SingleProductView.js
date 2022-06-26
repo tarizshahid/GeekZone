@@ -1,10 +1,47 @@
-import React from 'react'
 import '../App.css'
 import Navbar from './Homepage/Navbar'
 import Footer from './Footer/footer'
 // import './SingleProductView.css'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import {
+    useParams
+  } from "react-router-dom";
+  
+
 
 const SingleProductView = () => {
+
+    const id=useParams();
+
+
+
+
+    useEffect(async ()=> {
+        try {
+    
+            console.log("iddd", id);
+            axios.post(`http://localhost:4000/api/person/getData`,{_id:'id'}).then(res => {
+                let r=res.data.data
+                console.log("allProducts", r);
+                 
+             } );
+    
+        } catch (error) {
+            console.error(error);
+        }
+      },[])
+    
+    
+    const addtocart = (event) => {
+         
+        console.log("ccc");
+    
+    
+    };
+    
+
+
   return (
     <div>
         <Navbar/>
@@ -21,16 +58,14 @@ const SingleProductView = () => {
                                     </div> 
                                     <div className="thumbs-wrap">
                                         <a href="#" className="item-thumb"> <img src="assets/images/items/3.jpg" /></a>
-                                        <a href="#" className="item-thumb"> <img src="assets/images/items/3.jpg" /></a>
-                                        <a href="#" className="item-thumb"> <img src="assets/images/items/3.jpg" /></a>
-                                        <a href="#" className="item-thumb"> <img src="assets/images/items/3.jpg" /></a>
+
                                     </div>
                                 </article>
                         </aside>
                         <main className="col-md-6">
                             <article>
                                 <a href="#" className="text-primary btn-link">Clothes</a>
-                                <h3 className="title">Great product name goes here</h3>
+                                <h3 className="title">Great product name goes here {'id'}</h3>
                                 <div>
                                     <ul className="rating-stars">
                                         <li  className="stars-active"> 
@@ -89,8 +124,12 @@ const SingleProductView = () => {
                                 </div> 
         
                                 <div className="mb-4">
-                                    <a href="#" className="btn btn-primary mr-1">Buy now</a>
-                                    <a href="#" className="btn btn-light">Add to card</a>
+
+                               
+
+                                    <a href="#" className="btn btn-primary mr-1">
+                                        Buy now</a>
+                                    <a  onClick={addtocart} className="btn btn-light">Add to card</a>
                                 </div>
                                 
                             </article> 

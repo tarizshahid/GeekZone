@@ -26,7 +26,7 @@ export default function ProductCard({product}) {
            </p>
               </Card.Text>
             </Card.Body>
-            <Link to="/SingleProductView" component={RouterLink} variant="body2">
+            <Link to={`/SingleProductView/${p._id}`} component={RouterLink} variant="body2">
                     <Button className='button'>BUY</Button>
                     &nbsp;
                     &nbsp;
