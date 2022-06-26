@@ -24,7 +24,6 @@ import Chart2 from './Chart2';
 import Deposits from './Deposits';
 import Deposits2 from './Deposits2';
 import Orders from './Orders';
-
 import UsersTable from '../Users'
 import ProductsTable from '../Products'
 

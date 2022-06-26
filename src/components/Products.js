@@ -9,6 +9,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material/';
 import { Box, margin } from '@mui/system';
+import {Link as RouterLink} from 'react-router-dom'
+
+import Link from '@mui/material/Link';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -86,7 +89,13 @@ export default function ProductsTable() {
     </TableContainer>
     <Box  sx = {{paddingY: 2}}>
     <Box sx = {{mx: "auto", width: 200}}>
+
+    <Link to="/dashboard/products/AddProduct" component={RouterLink} variant="body2">
+                    
     <StyledTableButton variant='contained'>+ ADD PRODUCT</StyledTableButton>
+                  </Link>
+
+
     </Box>
     </Box>
     </>

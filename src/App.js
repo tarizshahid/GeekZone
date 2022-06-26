@@ -26,8 +26,6 @@ import Health from './components/Health/Health'
 import Office from './components/Office/Office'
 import { NotFound } from './components/NotFound'
 import UserDashboard from './components/UserDashboard/UserDashboard'
-import AddProduct from './components/AddProduct/addProduct'
-
 
 
 export default function App() {
@@ -46,10 +44,11 @@ export default function App() {
           <Route  path='/checkout' element={<Checkout/>} />
           <Route  path='/signin' element={<Signin/>} />
           <Route  path='/signup' element={<SignUp />} />
-          <Route  path='/dashboard/*' element={<Dashboard />} />
+          <Route  path='/dashboard/*' element={<Dashboard/>} />
           <Route  path='/FAQs' element={<FAQs />} />
           <Route  path='/SingleProductView' element={<SingleProductView/>} /> 
           <Route exact path='*' element={<NotFound/>} /> 
+
           
       </Routes>
 
