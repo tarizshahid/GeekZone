@@ -54,7 +54,7 @@ export default function Orders() {
         </TableHead>
         <TableBody>
           {order.map((row) => (
-            <TableRow key={row.product_id}>
+            <TableRow key={row._id}>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.product_name}</TableCell>
               <TableCell>{row.person_name}</TableCell>
