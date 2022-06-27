@@ -44,4 +44,24 @@ router.route('/setData')
         
     });
 
+    router.route('/getanyData')
+    .post(async (req, res) => {
+        console.log("in get API");
+        try {
+            let requestedata = req.body.data;
+            console.log("in set API", requestedata);
+
+            let data= await person.find(requestedata);
+            if(data){ 
+                res.send({ status: 200, message: "Email Found", data:data }); 
+              }else{
+                res.send({ status: 500, message: "Email Not Found", data:data }); 
+              }
+             }catch (e) {
+            console.log("error in setData" + e.toString());
+            res.send({ status: 500, message: "something went wrong" });
+          }
+        
+    });
+
 module.exports = router;

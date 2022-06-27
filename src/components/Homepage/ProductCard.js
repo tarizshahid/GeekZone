@@ -6,12 +6,46 @@ import { CardBody, CardTitle, CardSubtitle, CardText, Button, CardImg } from 're
 import './ProductCard.css'
 import {Link as RouterLink} from 'react-router-dom'
 import Link from '@mui/material/Link';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({product}) {
+  const navigate=useNavigate();
 
-  const addtocartandbuy = (event) => {
-         
-    console.log("ccc");
+  const addtocartandbuy = (event,prod) => {
+    let cartPrevious=JSON.parse(localStorage.getItem("cart"));
+    console.log("xcc",cartPrevious?cartPrevious.item?cartPrevious.item.length>0:false:false,cartPrevious);
+    let order;
+
+    if(cartPrevious?cartPrevious.item:false){
+      order=cartPrevious;
+      order.item.push(prod);
+    }else{
+      order={item:[prod]}
+    }
+    localStorage.setItem("cart",JSON.stringify(order))
+    navigate("../cart")
+
+    console.log("ccc",prod);
+
+
+};
+
+const addtocart = (event,prod) => {
+  let cartPrevious=JSON.parse(localStorage.getItem("cart"));
+  console.log("xcc",cartPrevious?cartPrevious.item?cartPrevious.item.length>0:false:false,cartPrevious);
+  let order;
+
+  if(cartPrevious?cartPrevious.item:false){
+    order=cartPrevious;
+    order.item.push(prod);
+  }else{
+    order={item:[prod]}
+  }
+  localStorage.setItem("cart",JSON.stringify(order))
+   window.alert("Product added to Cart");
+
+  console.log("ccc",prod);
 
 
 };
@@ -34,7 +68,7 @@ export default function ProductCard({product}) {
               </Card.Text>
             </Card.Body>
             
-                    <Button onClick={addtocartandbuy} className='button'>BUY</Button>
+                    <Button onClick={event => addtocartandbuy(event, p)} className='button'>BUY</Button>
                     &nbsp;
                     &nbsp;
                     &nbsp;

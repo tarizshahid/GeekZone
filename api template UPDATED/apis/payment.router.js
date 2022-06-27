@@ -8,9 +8,11 @@ router.route('/setData')
             let requestedata = req.body.data;
             console.log("in set API",req.body);
             
-            let query = new analysis();
+            let query = new payment();
             query.name = requestedata.name;
-
+            query.person_id = requestedata.person_id;
+            query.exp= requestedata.exp;
+            query.cvv =requestedata.cvv;
             query.save();
 
             res.send({ status: 200, message: "Data added.", data:query });
@@ -27,7 +29,7 @@ router.route('/setData')
             let requestedata = req.body.data;
             console.log("in set API");
 
-            let data= await analysis.find(requestedata);
+            let data= await payment.find(requestedata);
 
             res.send({ status: 200, message: "Data added.", data:data });
         }catch (e) {

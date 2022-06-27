@@ -9,7 +9,18 @@ router.route('/setData')
             console.log("in set API",req.body);
             
             let query = new cart();
-            query.name = requestedata.name;
+
+            query.product_name= requestedata.product_name;
+            query.product_id= requestedata.product_id;
+            query.product_price= requestedata.product_price;
+            query.quantity= requestedata.quantity;
+            if(requestedata.person_id)
+            query.person_id= requestedata.person_id;
+            query.person_name= requestedata.person_name;
+            query.date= requestedata.date;
+            query.address= requestedata.address;
+            query.status= requestedata.status;
+            query.method= requestedata.method;
 
             query.save();
 

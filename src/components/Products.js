@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material/';
 import { Box, margin } from '@mui/system';
 import {Link as RouterLink} from 'react-router-dom'
+import axios from 'axios';
 
 import Link from '@mui/material/Link';
 
@@ -46,42 +48,50 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-  createData('Iphone Charger', 45 , 64, "Accessories", 4.5),
-  createData('Power Bank 10000mAh', 88, 34 , "Electronics" , 4.0),
-  createData('Quadcopter Drone', 250, 6, "Drone" , 4.3),
-  createData('Samsung Galaxy S10', 699 , 4, "Mobile", 3.9),
-  createData('Power Bank 10000mAh', 88, 34 , "Electronics" , 4.0),
-  createData('BackLit Mini Keyboard', 29 , 16, "Accessories" , 5),
-  createData('Haylou Smart Braclet', 38 , 20, "Electronics", 4.1),
-  createData('Iphone 11 Pro ', 999 , 24 , "Mobile" , 4.0),
-  createData('LED Bluetooth Speaker', 55 , 21 , "Electronics" , 4.4),
-];
+
 
 export default function ProductsTable() {
+
+  const [product, setProduct] = useState([])
+
+  useEffect(async ()=> {
+    try {
+
+        console.log("usersss",);
+        axios.post(`http://localhost:4000/api/items/getData`,{data:{}}).then(res => {
+
+        const allproducts=res.data.data;
+        console.log("allProducts", allproducts);
+        setProduct(allproducts);
+      } );
+
+    } catch (error) {
+        console.error(error);
+    }
+  },[])
+
+
   return (
       <>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Products</StyledTableCell>
-            <StyledTableCell align="right">PPU(USD)</StyledTableCell>
+            <StyledTableCell align="left">Product Name</StyledTableCell>
+            <StyledTableCell align="right">Price(PKR)</StyledTableCell>
             <StyledTableCell align="right">Quantity</StyledTableCell>
             <StyledTableCell align="right">Category</StyledTableCell>
             <StyledTableCell align="right">Rating</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+          {product.map((row) => (
+            <StyledTableRow key={row._id}>
+              <StyledTableCell align="left">{row.name}</StyledTableCell>
+              <StyledTableCell align="right">{row.price}</StyledTableCell>
+              <StyledTableCell align="right">{row.quantity}</StyledTableCell>
+              <StyledTableCell align="right">{row.category}</StyledTableCell>
+              <StyledTableCell align="right">{row.review}/5</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

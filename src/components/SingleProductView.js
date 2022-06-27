@@ -8,11 +8,13 @@ import {
     useParams
   } from "react-router-dom";
 import { rgbToHex } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
   
 
 
 const SingleProductView = () => {
     const [products, setProducts] = useState([])
+    const navigate=useNavigate();
 
     const _id=useParams();
     var product={};
@@ -34,14 +36,44 @@ const SingleProductView = () => {
         }
       },[])
     
+      const addtocartandbuy = (event,prod) => {
+        let cartPrevious=JSON.parse(localStorage.getItem("cart"));
+        console.log("xcc",cartPrevious?cartPrevious.item?cartPrevious.item.length>0:false:false,cartPrevious);
+        let order;
     
-    const addtocart = (event) => {
-         
-        console.log("ccc");
+        if(cartPrevious?cartPrevious.item:false){
+          order=cartPrevious;
+          order.item.push(prod);
+        }else{
+          order={item:[prod]}
+        }
+        localStorage.setItem("cart",JSON.stringify(order))
+        navigate("../cart")
+    
+        console.log("ccc",prod);
     
     
     };
-    
+
+      const addtocart = (event,prod) => {
+        let cartPrevious=JSON.parse(localStorage.getItem("cart"));
+        console.log("xcc",cartPrevious?cartPrevious.item?cartPrevious.item.length>0:false:false,cartPrevious);
+        let order;
+      
+        if(cartPrevious?cartPrevious.item:false){
+          order=cartPrevious;
+          order.item.push(prod);
+        }else{
+          order={item:[prod]}
+        }
+        localStorage.setItem("cart",JSON.stringify(order))
+         window.alert("Product added to Cart");
+      
+        console.log("ccc",prod);
+      
+      
+      };
+      
 
 
   return (
@@ -99,9 +131,9 @@ const SingleProductView = () => {
 
                                
 
-                                    <a href="#" className="btn btn-primary mr-1">
+                                    <a  onClick={event => addtocartandbuy(event,products)} className="btn btn-primary mr-1">
                                         Buy now</a>
-                                    <a  onClick={addtocart} className="btn btn-light">Add to card</a>
+                                    <a  onClick={event => addtocart(event,products)} className="btn btn-light">Add to card</a>
                                 </div>
                                 
                             </article> 

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const payment = new Schema(
   {
     name: String,
-    number : String,
+    person_id : Schema.Types.ObjectId,
     exp:String,
     cvv:String,
   }

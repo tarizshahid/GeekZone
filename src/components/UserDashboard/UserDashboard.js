@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
+
 import Navbar from '../Homepage/Navbar'
 import './UserDashboard.css'
 import Table from '@mui/material/Table';
@@ -9,6 +11,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import axios from 'axios';
 
 const theme = createTheme({
     typography: {
@@ -23,28 +26,40 @@ function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
   
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 'paid'),
-    createData('Ice cream sandwich', 237, 9.0, 37, 'paid'),
-    createData('Eclair', 262, 16.0, 24, 'cancelled'),
-    createData('Cupcake', 305, 3, 67, 'paid'),
-    createData('Gingerbread', 356, 16.0, 49, 'paid'),
-  ];
-
 
 const UserDashboard = () => {
+  const [order, setUser] = useState([])
+  const [pid, setpid] = useState([])
+
+  useEffect(async ()=> {
+    try {
+      let p_id=JSON.parse(localStorage.getItem("user"));
+        console.log("orderss",);
+
+        setpid(p_id);
+        axios.post(`http://localhost:4000/api/cart/getData`,{data:{person_id:p_id._id}}).then(res => {
+
+        const allusers=res.data.data;
+        console.log("allusers", allusers);
+        setUser(allusers);
+      } );
+
+    } catch (error) {
+        console.error(error);
+    }
+  },[])
+
   return (
     <>
     <Navbar/>
     <Table className='part1'>
       <td width={50}>
     <tr><h1 className='udh1'>User Details</h1></tr>  
-    <tr><h2>Muhammad Shabrez</h2></tr>
-    <tr><h2>mianshabrez@gmail.com</h2></tr>
-    <tr><h2>0331-7180647</h2></tr>
-    <tr><h1 className='udh1'>User Adresses</h1></tr>  
-    <tr><h2>House no. 19 , Street no. 3 , Liaquatabad , Lhr </h2></tr>  
-    <tr><h2>House no. 19 , Street no. 3 , Sadar , Lhr </h2></tr>  
+    <tr><h2>{pid.Fname}</h2></tr>
+    <tr><h2>{pid.Lname}</h2></tr>
+    <tr><h2>{pid.email}</h2></tr>
+    <tr><h2>{pid.user_type}</h2></tr>
+
     </td>
     
       <td>
@@ -64,18 +79,16 @@ const UserDashboard = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {order.map((row) => (
             <TableRow
-              key={row.name}
+              key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="left">{row.product_name}</TableCell>
+              <TableCell align="right">{row.product_price}</TableCell>
+              <TableCell align="right">{row.quantity}</TableCell>
+              <TableCell align="right">{row.date}</TableCell>
+              <TableCell align="right">{row.status}</TableCell>
             </TableRow>
           ))}
         </TableBody>

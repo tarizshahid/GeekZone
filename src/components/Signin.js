@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -34,6 +35,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
+  const [items, setItems] = useState([]);
+
   console.log("haan");
   const navigate=useNavigate();
   const handleSubmit = (event) => {
@@ -52,6 +55,9 @@ export default function SignInSide() {
     axios.post(`http://localhost:4000/api/person/getData`,signindata).then(res => {
       if(res.data.data){
         console.log("email found" , res.data.data);
+        
+          localStorage.setItem('user', JSON.stringify(res.data.data));
+          console.log("local",  localStorage.getItem('user'));
         //window.alert("User Credentials Match");
         //yahan route login k baad admin etc
         if(res.data.data.user_type=='admin'){

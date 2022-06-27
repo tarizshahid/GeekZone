@@ -30,7 +30,9 @@ import AddProducts from './components/Homepage/AddProducts'
 import AddProd from './components/AddProduct/addProduct'
 
 export default function App() {
-
+  //localStorage.clear();
+  localStorage.removeItem("cart")
+  console.log("cleared");
   return (
    <>
       <Routes>

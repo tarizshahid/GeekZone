@@ -10,7 +10,12 @@ router.route('/setData')
             
             let query = new items();
             query.name = requestedata.name;
-
+            query.category= requestedata.category;
+            query.description= requestedata.description;
+            query.image= requestedata.image;
+            query.price= requestedata.price;
+            query.quantity= requestedata.quantity;
+            query.review= requestedata.review;
             query.save();
 
             res.send({ status: 200, message: "Data added.", data:query });

@@ -1,10 +1,12 @@
 import { Add, Remove } from '@material-ui/icons';
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import Navbar  from './Homepage/Navbar'
 import { css } from 'styled-components'
 import {Link as RouterLink} from 'react-router-dom'
 import Link from '@mui/material/Link';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -124,7 +126,7 @@ font-weight: 300;
 `;
 
 const Hr = styled.hr`
-background color: #23A9E1;
+background-color: #23A9E1;
 border: none;
 height: 1px;
 `;
@@ -159,8 +161,94 @@ font-size: 14px;
 border: none;
 `;
 
+var order=[]
 
 const Cart = () => {
+    const [products, setProducts] = useState([]);
+    const [total, settotal] = useState(0)
+    const navigate=useNavigate();
+    var user;
+
+
+    useEffect(async ()=> {
+        try {
+    
+            if(JSON.parse(localStorage.getItem("user"))){
+                user=JSON.parse(localStorage.getItem("user"));
+
+            }
+      
+             let cartPrevious=JSON.parse(localStorage.getItem("cart"));
+                if(cartPrevious.item?cartPrevious.item.length>0:false){
+                    let tot=0;
+
+                 for(let i=0;i<cartPrevious.item.length;i++){
+                    let obj={
+                        product_name:'',
+                        product_id:'',
+                        product_price:2,
+                        quantity:1,
+                        person_id:undefined,
+                        person_name:'',
+                        date:'',
+                        address:'',
+                        status:'',
+                        method:''
+                    }
+
+                    obj.product_name=cartPrevious.item[i].name||'';
+                    obj.product_id=cartPrevious.item[i]._id||'';
+                    obj.product_price=cartPrevious.item[i].price||0;
+
+                    obj.quantity=1;
+                    obj.person_id=user?user._id:undefined;
+                    obj.person_name=user?(user.Fname+' '+user.Lname):'';
+                    obj.date=(new Date()).toDateString();
+
+                    obj.address=user?user.address:'';
+                    obj.status='Paid';
+                    obj.method='COD';
+                    tot=tot+(cartPrevious.item[i].price||0);
+                    settotal(tot);
+                    order.push(obj);    
+                    console.log("counting add")
+                 }
+                }
+             
+             setProducts(cartPrevious.item);
+
+        console.log("cartt",user, order);
+
+        
+
+
+        } catch (error) {
+            console.error(error);
+        }
+      },[])
+
+
+
+        const checkouted =() =>{
+            /* order.shift(); */
+            console.log("finished", order);
+
+            for(let i=0;i<order.length;i++){
+
+                console.log("iddd, i= ", i);
+                axios.post(`http://localhost:4000/api/cart/setData`,{data:order[i]}).then(res => {
+                 
+                    console.log("allProduct addeddess");
+                } );
+            }
+            
+            /* order=[] */
+            window.alert("Order has been Placed.");
+            navigate("../")
+
+
+        };
+    
     return(
         <Container>
             <Navbar/>
@@ -171,64 +259,40 @@ const Cart = () => {
                  <TopButton type='filled'>CONTINUE SHOPPING</TopButton>
                    
                   </Link>
-               
-                   
-                   <TopTexts>
-                       <TopText>Shopping Bag(2)</TopText>
-                       <TopText>Your Wishlist(0)</TopText>
-                   </TopTexts>
+
                </Top>
                <Bottom>
                    <Info>
-                       <Product>
+                   {products.map((p, i) => (
+                       <Product key={p._id}>
                            <ProductDetail>
-                               <Image src="https://i.ibb.co/gjYqQwy/71hy-JO10v1-L-SL1500.jpg"/>
+                               <Image src={p.image}/>
                                <Details>
                                    <ProductName>
-                                       <b><br></br>Product:</b> TARRISS SAMPLE GADGET
+                                       <b><br></br>Product:</b> {p.name}
                                     </ProductName>
                                    <ProductID>
-                                       <b><br></br>ID:</b>654886231
+                                       <b><br></br>ID:</b>{p._id}
                                        </ProductID>
                                </Details>
                            </ProductDetail>
                            <PriceDetail>
                             <ProductAmountContainer>
-                                <Add/>
-                                <ProductAmount>2</ProductAmount>
-                                <Remove/>
+                                <ProductAmount>{p.category}</ProductAmount>
                             </ProductAmountContainer>
-                            <ProductPrice>6,000 PKR</ProductPrice>
+                            <ProductPrice>{p.price}</ProductPrice>
                            </PriceDetail>
                        </Product>
+                   ))}
                        <Hr/>
-                       <Product>
-                           <ProductDetail>
-                               <Image src="https://i.ibb.co/ykx7gB0/Apple-TV-4-K-300x300.jpg" alt="Apple-TV-4-K-300x300"/>
-                               <Details>
-                                   <ProductName>
-                                       <b><br></br>Product:</b> APPLE TV SAMPLE GADGET
-                                    </ProductName>
-                                   <ProductID>
-                                       <b><br></br>ID:</b>656528741
-                                       </ProductID>
-                               </Details>
-                           </ProductDetail>
-                           <PriceDetail>
-                            <ProductAmountContainer>
-                                <Add/>
-                                <ProductAmount>2</ProductAmount>
-                                <Remove/>
-                            </ProductAmountContainer>
-                            <ProductPrice>50,000 PKR</ProductPrice>
-                           </PriceDetail>
-                       </Product>
+
+
                    </Info>
                    <Summary>
                        <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                        <SummaryItem>
                            <SummaryItemText>Subtotal</SummaryItemText>
-                           <SummaryItemPrice>56,000 PKR</SummaryItemPrice>
+                           <SummaryItemPrice>{total} PKR</SummaryItemPrice>
                        </SummaryItem>
                        <SummaryItem>
                            <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -240,9 +304,9 @@ const Cart = () => {
                        </SummaryItem>
                        <SummaryItem type="total">
                            <SummaryItemText>Total</SummaryItemText>
-                           <SummaryItemPrice>56,000 PKR</SummaryItemPrice>
+                           <SummaryItemPrice>{total} PKR</SummaryItemPrice>
                        </SummaryItem>
-                       <Button>CHECKOUT NOW</Button>
+                       <Button onClick={checkouted} >CHECKOUT NOW</Button>
                    </Summary>
                </Bottom>
              </Wrapper>           
