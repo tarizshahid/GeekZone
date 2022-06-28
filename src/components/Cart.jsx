@@ -7,6 +7,21 @@ import {Link as RouterLink} from 'react-router-dom'
 import Link from '@mui/material/Link';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Checkout from './checkout/Checkout';
+import { TextField } from '@material-ui/core';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+    typography: {
+
+      htmlfontSize: 16,
+    },
+  });
+
+const fontsized = styled.div`
+    font-size: 22px;
+`
+
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -62,7 +77,7 @@ flex: 1;
 border: 0.5px solid lightgray;
 border-radius: 10px;
 padding: 20px;
-height: 50vh;
+height: 64vh;
 font-size: 14px;
 `;
 
@@ -161,6 +176,7 @@ font-size: 14px;
 border: none;
 `;
 
+
 var order=[]
 
 const Cart = () => {
@@ -227,12 +243,60 @@ const Cart = () => {
         }
       },[])
 
+      const deleteitem =(e,item) =>{
+           
+
+        order=order.filter((e)=> {return !(e.product_id.toString()==item._id.toString())});
+        let cartPrevious=JSON.parse(localStorage.getItem("cart"));
+
+        cartPrevious.item=cartPrevious.item.filter((e)=> {return !(e._id.toString()==item._id.toString())});
+        setProducts(cartPrevious.item);
+
+          let neworder={item:cartPrevious.item}
+          localStorage.removeItem("cart");
+        localStorage.setItem("cart",JSON.stringify(neworder))
+         window.alert("Product removed from Cart");
+      
+
+        };
+
+        const submits = (event) => {
+    console.log("sdfdf");
+     
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log("qwqwe");
+
+
+        console.log("cartt",user, order);
+
+        
+        for(let i=0;i<order.length;i++){
+
+        console.log("iddd, i= ", i);
+
+        order[i].person_name=data.get('person_name');
+        order[i].phone=data.get('person_phone');
+         order[i].address=data.get('address');
+
+        axios.post(`http://localhost:4000/api/cart/setData`,{data:order[i]}).then(res => {
+            window.alert('order placed')
+            navigate("../")
+            console.log("allProduct addeddess");
+        } );
+
+        }
+
+
+  };
 
 
         const checkouted =() =>{
             /* order.shift(); */
-            console.log("finished", order);
-
+            /* localStorage.setItem('order', JSON.stringify(order));
+            navigate("../checkout"); */
+            /* console.log("finished", order);
+*/
             for(let i=0;i<order.length;i++){
 
                 console.log("iddd, i= ", i);
@@ -240,11 +304,12 @@ const Cart = () => {
                  
                     console.log("allProduct addeddess");
                 } );
+
             }
             
-            /* order=[] */
+            
             window.alert("Order has been Placed.");
-            navigate("../")
+            navigate("../") 
 
 
         };
@@ -281,13 +346,18 @@ const Cart = () => {
                                 <ProductAmount>{p.category}</ProductAmount>
                             </ProductAmountContainer>
                             <ProductPrice>{p.price}</ProductPrice>
+                           <Button onClick={event => deleteitem(event, p)} >remove</Button>
+
                            </PriceDetail>
+
                        </Product>
                    ))}
                        <Hr/>
 
 
                    </Info>
+                   
+                   
                    <Summary>
                        <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                        <SummaryItem>
@@ -306,8 +376,15 @@ const Cart = () => {
                            <SummaryItemText>Total</SummaryItemText>
                            <SummaryItemPrice>{total} PKR</SummaryItemPrice>
                        </SummaryItem>
-                       <Button onClick={checkouted} >CHECKOUT NOW</Button>
-                   </Summary>
+                       <form onSubmit={submits}>
+                       <ThemeProvider theme={theme}>
+               <TextField id="filled-basic" name="person_name" placeholder="Name" variant="filled" InputProps={{ style: { fontSize: 18 } }}InputLabelProps={{ style: { fontSize: 18 } }}/><br></br><br></br>
+               <TextField id="filled-basic" name="person_phone" placeholder="Phone No." variant="filled" InputProps={{ style: { fontSize: 18 } }} InputLabelProps={{ style: { fontSize: 18 } }}/><br></br><br></br>
+               <TextField id="filled-basic" name="address" placeholder="Shipping Address" variant="filled" InputProps={{ style: { fontSize: 18 } }} InputLabelProps={{ style: { fontSize: 18 } }}/><br></br><br></br>
+               </ThemeProvider>
+               <Button  type="submit" >CHECKOUT NOW</Button>
+               </form>
+                       </Summary>
                </Bottom>
              </Wrapper>           
         </Container>

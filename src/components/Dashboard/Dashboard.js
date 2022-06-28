@@ -26,6 +26,7 @@ import Deposits2 from './Deposits2';
 import Orders from './Orders';
 import UsersTable from '../Users'
 import ProductsTable from '../Products'
+import './Dashboard.css'
 
 
 function Copyright(props) {
@@ -135,6 +136,8 @@ function DashboardContent() {
             >
               Dashboard
             </Typography>
+            <button className='logoutbtn'>Logout</button>
+
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />

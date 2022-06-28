@@ -1,52 +1,40 @@
  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
  @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap");
 
-* {
- 
-  box-sizing: border-box;
-  font-family: "Jost", sans-serif;
-  /* color: white; */
-  text-align: center;
-}
-
-.prodBackground {
+.addprod-general{
   margin: 0;
   padding: 0;
-  background: #16b4e4;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+}
+
+.addprod-body {
+  background: white;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
 
-.Prodform-container {
+.addprod-form-container {
   width: 360px;
-   
+  background-color: white;
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 10px;
- 
 }
 
-.Prodregister-form {
+.addprod-register-form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 10px;
 }
-.success-message {
-  font-family: "Roboto", sans-serif;
-  background-color: #3f89f8;
-  padding: 15px;
-  color: white;
-}
-.ProductTextStyle{
-  text-align: center;
-  font-weight: bold;
-  color: black;
-  margin-right: 70px;
-}
-.Prodform-field {
+
+.addprod-field {
   margin: 10px 0 10px 0;
   padding: 15px;
   font-size: 16px;
@@ -54,26 +42,9 @@
   font-family: "Roboto", sans-serif;
 }
 
-span {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  color: red;
-  margin-bottom: 15px;
-}
-
-input {
-  background: #f2f2f2;
-  border-radius: 10px;
-  color: black;
-}
-
-.error {
-  border-style: solid;
-  border: 2px solid #ffa4a4;
-}
 
 button {
-  background: blue;
+  background: #3f89f8;
   color: white;
   cursor: pointer;
 }
@@ -82,25 +53,64 @@ button:disabled {
   cursor: default;
 }
 
-.logo {
-  display: grid;
-  grid-column: 2/3;
-  justify-content: start;
-  align-items: center;
-}
-
-.Prodimage-button {
-
-  background: #f2f2f2;
+/* Dropdown Button */
+.dropbtn {
+  background-color: #3f89f8;
   color: white;
-  cursor: pointer;
+  padding: 16px;
   font-size: 16px;
-  color: black;
-  border-radius: 10px;
+  border: none;
 }
 
-h2
-{
-  color: gray;
-  font-size: 14px;
+/* The container <div> - needed to position the dropdown content */
+.addprod-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.addprod-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.addprod-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.addprod-dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.addprod-dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.addprod-dropdown:hover .dropbtn {background-color: #3f89f8;}
+
+.addprod-dropdown-size{
+  font-size: 16px;
+  margin-top: 5x;
+  padding: 10px;
+  font-size: 16px;
+  border: 0;
+  font-family: "Roboto", sans-serif;
+  
+}
+
+.addprodhd{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 66px;
 }

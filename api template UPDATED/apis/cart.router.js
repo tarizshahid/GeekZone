@@ -47,5 +47,29 @@ router.route('/setData')
           }
         
     });
+    router.route('/updatequantity')
+    .post(async (req, res) => {
+        console.log("in get updatequantity");
+        try {
+            let requestedata = req.body.data;
+            console.log("in set updatequantity",requestedata);
 
+            let dataprev= await cart.findOne({_id:requestedata._id})
+
+
+            let data= await cart.findOneAndUpdate({_id:requestedata._id},
+                {
+                 $set:{
+                    quanity:dataprev.quantity-requestedata.quantity
+                 }   
+                });
+
+            res.send({ status: 200, message: "Data added.", data:data });
+        }catch (e) {
+            console.log("error in setData" + e.toString());
+            res.send({ status: 500, message: "something went wrong" });
+          }
+        
+    });
+    
 module.exports = router;

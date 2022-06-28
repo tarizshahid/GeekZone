@@ -62,6 +62,7 @@ const Navbar = () => {
     const [showMediaIcons, setShowMediaIcons] = useState(false);
     return (
         <>
+        <div className='navbar-general'>
             <nav className="main-nav">
 
                 <div className='logo'>
@@ -135,7 +136,7 @@ const Navbar = () => {
 
             </nav>
 
-          
+            </div>
         </>
     )
 

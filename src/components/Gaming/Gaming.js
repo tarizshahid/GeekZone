@@ -28,7 +28,9 @@ export default function Gaming() {
   return (
     <>
     <Navbar/>
+    <div className='gaming'>
     <h1>GAMING</h1>
+    </div>
     <ProductCard product={products}/>
 
     </>

@@ -42,4 +42,21 @@ router.route('/setData')
         
     });
 
+    router.route('/deleteData')
+    .post(async (req, res) => {
+
+            try {
+                let requestedata = req.body.data;
+                console.log("in set API",requestedata);
+    
+                let data= await items.deleteOne(requestedata);
+    
+                res.send({ status: 200, message: "Data added.", data:data });
+            }catch (e) {
+                console.log("error in setData" + e.toString());
+                res.send({ status: 500, message: "something went wrong" });
+              }
+
+    });
+
 module.exports = router;

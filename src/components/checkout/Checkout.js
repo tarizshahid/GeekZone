@@ -13,8 +13,6 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
 import axios from 'axios'
 function Copyright() {
   return (
@@ -29,16 +27,12 @@ function Copyright() {
   );
 }
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = [''];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
       return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
     default:
       throw new Error('Unknown step');
   }

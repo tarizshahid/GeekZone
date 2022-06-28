@@ -15,7 +15,7 @@ export default function Home() {
   
   </div>
   <div className='secondline'>
-  <Linechart/>
+  {/* <Linechart/> */}
   </div>
   </div>
   <div className='secondhaft'>

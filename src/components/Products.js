@@ -70,6 +70,22 @@ export default function ProductsTable() {
     }
   },[])
 
+  const del = (ev,item) => {
+    console.log("sdfdf", item._id);
+ 
+    axios.post(`http://localhost:4000/api/items/deleteData`,{data:{_id:item._id}}).then(res => {
+      if(res.data.data){
+        console.log("resss",res.data.data );
+        window.alert("Item Deleted")
+        axios.post(`http://localhost:4000/api/items/getData`,{data:{}}).then(res => {
+
+        const allproducts=res.data.data;
+        console.log("allProducts", allproducts);
+        setProduct(allproducts);
+      } );
+      }
+   } );
+  };
 
   return (
       <>
@@ -82,6 +98,7 @@ export default function ProductsTable() {
             <StyledTableCell align="right">Quantity</StyledTableCell>
             <StyledTableCell align="right">Category</StyledTableCell>
             <StyledTableCell align="right">Rating</StyledTableCell>
+            <StyledTableCell align="right">Delete</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -92,6 +109,8 @@ export default function ProductsTable() {
               <StyledTableCell align="right">{row.quantity}</StyledTableCell>
               <StyledTableCell align="right">{row.category}</StyledTableCell>
               <StyledTableCell align="right">{row.review}/5</StyledTableCell>
+              <StyledTableButton variant='contained' onClick={event => del(event, row)} >Delete</StyledTableButton>
+
             </StyledTableRow>
           ))}
         </TableBody>

@@ -9,7 +9,7 @@ export default function PaymentForm() {
   
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      {/* <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
       <Grid container spacing={3}>
@@ -60,7 +60,7 @@ export default function PaymentForm() {
             label="Remember credit card details for next time"
           />
         </Grid>
-      </Grid>
+      </Grid> */}
     </React.Fragment>
   );
 }

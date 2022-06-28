@@ -5,7 +5,17 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import axios from 'axios';
+
+const theme = createTheme({
+  typography: {
+      allVariants: {
+          fontSize: 16,
+      },
+  },
+
+});
 
 export default function AddressForm() {
 
@@ -45,11 +55,11 @@ export default function AddressForm() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         Shipping address
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={16} sm={6}>
           <TextField
             required
             id="firstName"
@@ -60,7 +70,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={16} sm={6}>
           <TextField
             required
             id="lastName"
@@ -71,7 +81,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={16}>
           <TextField
             required
             id="address1"
@@ -82,7 +92,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={16}>
           <TextField
             id="address2"
             name="address2"
@@ -92,7 +102,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={16} sm={6}>
           <TextField
             required
             id="city"
@@ -103,7 +113,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={16} sm={6}>
           <TextField
             id="state"
             name="state"
@@ -112,7 +122,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={16} sm={6}>
           <TextField
             required
             id="zip"
@@ -123,7 +133,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={16} sm={6}>
           <TextField
             required
             id="country"
@@ -134,11 +144,7 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox onClick={handleFormControl} color="secondary" name="saveAddress" value="no" />}
-            label="Use this address for payment details"
-          />
+        <Grid item xs={16}>
         </Grid>
       </Grid>
  

@@ -57,6 +57,9 @@ const SingleProductView = () => {
 
       const addtocart = (event,prod) => {
         let cartPrevious=JSON.parse(localStorage.getItem("cart"));
+
+        
+
         console.log("xcc",cartPrevious?cartPrevious.item?cartPrevious.item.length>0:false:false,cartPrevious);
         let order;
       
@@ -78,6 +81,7 @@ const SingleProductView = () => {
 
   return (
     <div>
+        <div className='spv-general'>
         <Navbar/>
  <section className="section-content padding-y bg">
 
@@ -155,7 +159,7 @@ const SingleProductView = () => {
     </section>
     <Footer/>
     </div>
-
+    </div>
   )
 }
 

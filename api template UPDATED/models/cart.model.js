@@ -9,9 +9,9 @@ const cart = new Schema(
     quantity:Number,
     person_id:Schema.Types.ObjectId,
     person_name:String,
-
-    date:String,
+    person_phone:String,
     address:String,
+    date:String,
     status:String,
     method:String,
     payment_id:Schema.Types.ObjectId
