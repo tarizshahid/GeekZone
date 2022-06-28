@@ -38,7 +38,7 @@ router.route('/setData')
             let requestedata = req.body.data;
             console.log("in set API");
 
-            let data= await cart.find(requestedata);
+            let data= await cart.find(requestedata).populate("product_id");
 
             res.send({ status: 200, message: "Data added.", data:data });
         }catch (e) {
